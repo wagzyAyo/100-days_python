@@ -6,6 +6,6 @@ def paint_calc(height, width, coverage):
     coverage = int(coverage)
     result = (height * width) / coverage
     result = math.floor(result)
-    print(f"You will need {result} of paint")
+    print(f"You will need {result} cans of paint")
 
 paint_calc(3, 9, 5)
