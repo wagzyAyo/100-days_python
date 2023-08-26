@@ -34,3 +34,5 @@ while new_bidders:
         new_bidders = False
         highest_bid(bid, name)
         print(bidders)
+    else:
+        clear()
