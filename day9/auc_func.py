@@ -11,12 +11,14 @@ def clear():
 bidders = {}
 
 
-def highest_bid(bid_amount, prop_bidder):
+def highest_bid(bidders_log):
     highest = 0
     winner = ""
-    for prop_bidder in bidders:
+
+    for prop_bidder in bidders_log:
+        bid_amount = bidders_log[prop_bidder]
         if bid_amount > highest:
-            highest = bid
+            highest = bid_amount
             winner = prop_bidder
     print(f"The highest bidder is {winner} with ${highest}")
 
@@ -32,7 +34,7 @@ while new_bidders:
 
     if continuity == "no":
         new_bidders = False
-        highest_bid(bid, name)
+        highest_bid(bidders)
         print(bidders)
     else:
         clear()
