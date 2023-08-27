@@ -12,11 +12,15 @@ def is_leap_year(year):
 
 
 def days_in_month(year, month):
+    if month > 12 and month < 1:
+        return "Invalid month"
     month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     if is_leap_year(year) and month == 2:
         month_days[1] = 29
     return month_days[month - 1]
 
 
-result = days_in_month(2020, 2)
-print(result)
+year = int(input("Enter a year: "))
+month = int(input("Enter a month: "))
+days = days_in_month(year, month)
+print(days)
