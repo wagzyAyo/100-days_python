@@ -6,14 +6,8 @@ def deal_card():
     card = random.choice(cards)
     return card
 
-user_card = []
-computer_card = []
-
-for _ in range(2):
-    user_card.append(deal_card())
-    computer_card.append(deal_card())
-
 def calculate_score(cards):
+    '''Take a list of card and return the score calculated from the list of card'''
     if sum(cards) == 21 and len(cards) == 2:
         return 0
 
@@ -22,5 +16,16 @@ def calculate_score(cards):
         cards.append(1)
     return sum(cards)
 
+user_card = []
+computer_card = []
+is_game_over = False
 
+for _ in range(2):
+    user_card.append(deal_card())
+    computer_card.append(deal_card())
 
+user_score = calculate_score(user_card)
+computer_score = calculate_score(computer_card)
+
+if user_score == 0 or computer_score  == 0 or user_score > 21:
+    is_game_over = True
