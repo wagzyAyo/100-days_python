@@ -3,7 +3,7 @@
 number = range(1 -101)
 for x in number:
     if x % 3 == 0 and number % 5 == 0:
-    print("Fizz Buzz")
+        print("Fizz Buzz")
     elif x % 3 == 0:
         print("Fizz")
     elif x % 5 == 0:
