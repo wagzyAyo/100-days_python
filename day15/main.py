@@ -80,49 +80,47 @@ while on:
     elif order == "expresso":
        
         if water >= expresso_water and coffe >= expresso_coffe:
+            #Process coins
             total_payment = payment()
+            #Check if transaction is successful
             alert = cost(expresso_cost, total_payment)
             total_money += alert
             total_money = round(total_money, 2)
             water -= expresso_water
             coffe -= expresso_coffe
-            print(milk,coffe,water)
+            #Make Coffe
+            print("Here is your coffe, enjoy!☕")
         else:
             print(f"Not enough ingridient to makee {order}")
     elif order == "latte":
         if water >= latte_water and coffe >= latte_coffe and milk >= latte_milk:
+            #Process coins
             total_payment = payment()
+            #Check if transaction is successful
             alert = cost(latte_cost, total_payment)
             total_money += alert
             total_money = round(total_money, 2)
             water -= latte_water
             coffe -= latte_coffe
             milk -= latte_milk
-            print(milk,coffe,water)
+            #Make Coffe
+            print("Here is your coffe, enjoy!☕")
         else:
             print(f"Not enough ingridient to makee {order}")
     elif order == "cappuccino":
         if water >= cappuccino_water and coffe >= cappuccino_coffe and milk >= cappuccino_milk:
+           #Process coins
             total_payment = payment()
+            #Check if transaction is successful
             alert = cost(cappuccino_cost, total_payment)
             total_money += alert
             total_money = round(total_money, 2)
             water -=  cappuccino_water
             coffe -= cappuccino_coffe
             milk -= cappuccino_milk
-            print(milk,coffe,water)
+            #Make Coffe
+            print("Here is your coffe, enjoy!☕")
         else:
             print(f"Not enough ingridient to makee {order}")
     else:
         print("Check your order and try again")
-
-
-#Process coins
-
-
-
-#Check if transaction is successful
-
-
-
-#Make Coffe
