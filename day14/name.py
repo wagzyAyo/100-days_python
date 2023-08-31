@@ -65,5 +65,83 @@ data = [
         'description': 'Sportswear multinational',
         'country': 'United States'
     },
+    {
+        'name': 'Justin bieber',
+        'followers_count': 293,
+        'description': 'Musician',
+        'country': 'Canada'
+    },
+    {
+        'name': 'Nicki Minaj',
+        'followers_count': 225,
+        'description': 'Musician',
+        'country': 'United States'
+    },
+    {
+        'name': 'Jennifer Lopez',
+        'followers_count': 251,
+        'description': 'Musician and actress',
+        'country': 'United States'
+    },
+    {
+        'name': 'Kourtney Kardeshian',
+        'followers_count': 224,
+        'description': 'Musician and actress',
+        'country': 'United States'
+    },
+    {
+        'name': 'Miley cyrus',
+        'followers_count': 213.8,
+        'description': 'Musician and actress',
+        'country': 'United States'
+    },
+    {
+        'name': 'Neymar jnr',
+        'followers_count': 213.5,
+        'description': 'Footballer',
+        'country': 'Brazil'
+    },
+    {
+        'name': 'Katty Perry',
+        'followers_count': 204,
+        'description': 'Musician',
+        'country': 'United States'
+    },
+    {
+        'name': 'Zandaya ',
+        'followers_count': 184,
+        'description': 'Actress, Singer',
+        'country': 'United States'
+    },
+    {
+        'name': 'Kevin Hart ',
+        'followers_count': 178,
+        'description': 'Comedian , Actor',
+        'country': 'United States'
+    },
+    {
+        'name': 'Cardi B',
+        'followers_count': 169,
+        'description': 'Musician',
+        'country': 'United States'
+    },
+    {
+        'name': 'Lebron James',
+        'followers_count': 158,
+        'description': 'Basketball Player',
+        'country': 'United States'
+    },
+    {
+        'name': 'Demi lovato',
+        'followers_count': 157,
+        'description': 'Musician and actress',
+        'country': 'United States'
+    },
+    {
+        'name': 'Eihanna',
+        'followers_count': 152,
+        'description': 'Musician and businesswoman',
+        'country': 'Barbados'
+    },
 ]
 
