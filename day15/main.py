@@ -22,11 +22,24 @@ def payment():
     total_payment = round(total_payment, 2)
     return total_payment
 
+def cost(amount, payment):
+    """Checks to amount of coffe and payment by user"""
+    change = 0
+    if payment >= amount:
+        change =  payment - amount
+        change = round(change, 2)
+        print(f"coffe cost {amount}, you pay {payment} you get {change} as change")
+        return payment
+    elif amount < payment:
+        print(f"coffe cost {amount}, you pay {payment} you get {change}")
+        print("Amount not enough to make the purchase")
+
 
 water = resources["water"]
 milk = resources["milk"]
 coffe = resources["coffe"]
-money = resources["money"]
+total_money = 0
+resources["money"] = total_money
 ##
 latte_water = MENU["latte"]['ingridient']['water']
 latte_milk = MENU["latte"]['ingridient']['milk']
@@ -45,6 +58,7 @@ cappuccino_milk = MENU["cappuccino"]['ingridient']['water']
 cappuccino_cost = MENU['cappuccino']["cost"]
 
 
+
 #Print Report
 on = True
 while on:
@@ -53,24 +67,31 @@ while on:
         print(f"""Water: {water}ml\n
     Milk: {milk}ml\n
     Coffe: {coffe}g\n
-    Money: ${money}\n
+    Money: ${total_money}\n
     """)
     elif order == 'off':
         break
 #Check if resources is sufficient?
     elif order == "expresso":
         if water >= expresso_water and coffe >= expresso_coffe:
-            payment()
+            total_payment = payment()
+            alert = cost(latte_cost, total_payment, total_money)
+            total_money += alert
         else:
             print(f"Not enough ingridient to makee {order}")
     elif order == "latte":
         if water >= latte_water and coffe >= latte_coffe and milk >= latte_milk:
-            payment()
+            total_payment = payment()
+            alert = cost(latte_cost, total_payment)
+            total_money += alert
+            print(total_money)
+
         else:
             print(f"Not enough ingridient to makee {order}")
     elif order == "cappuccino":
         if water >= cappuccino_water and coffe >= cappuccino_coffe and milk >= cappuccino_milk:
-            payment()
+            total_payment = payment()
+            alert = cost(cappuccino_cost, total_payment, total_money)
         else:
             print(f"Not enough ingridient to makee {order}")
     else:
