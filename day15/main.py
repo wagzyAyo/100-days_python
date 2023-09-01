@@ -89,11 +89,13 @@ while on:
             except TypeError:
                 print("Amount not enough to make the purchase")
 
-            water -= expresso_water
-            coffe -= expresso_coffe
+            
             #Make Coffe
             try:
+                
                 if alert >= expresso_cost:
+                    water -= expresso_water
+                    coffe -= expresso_coffe
                     print("Here is your coffe, enjoy!☕")
             except TypeError:
                 pass
@@ -114,12 +116,14 @@ while on:
             except TypeError:
                 print("Amount not enough to make the purchase")
                 
-            water -= latte_water
-            coffe -= latte_coffe
-            milk -= latte_milk
+            
             #Make Coffe
             try:
+                
                 if alert >= latte_cost:
+                    water -= latte_water
+                    coffe -= latte_coffe
+                    milk -= latte_milk
                     print("Here is your coffe, enjoy!☕")
             except TypeError:
                 pass
@@ -141,12 +145,14 @@ while on:
             except TypeError:
                 print("Amount not enough to make the purchase")
                 
-            water -=  cappuccino_water
-            coffe -= cappuccino_coffe
-            milk -= cappuccino_milk
+            
             #Make Coffe
             try:
+                
                 if alert >= cappuccino_cost:
+                    water -=  cappuccino_water
+                    coffe -= cappuccino_coffe
+                    milk -= cappuccino_milk
                     print("Here is your coffe, enjoy!☕")
             except TypeError:
                 pass
