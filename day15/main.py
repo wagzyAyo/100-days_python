@@ -32,7 +32,7 @@ def cost(amount, payment):
         return payment
     elif amount < payment:
         print(f"coffe cost {amount}, you pay {payment} you get {change}")
-        print("Amount not enough to make the purchase")
+        return"Amount not enough to make the purchase"
 
 
 
@@ -55,7 +55,6 @@ cappuccino_coffe = MENU["cappuccino"]['ingridient']['coffe']
 cappuccino_water = MENU["cappuccino"]['ingridient']['water']
 cappuccino_milk = MENU["cappuccino"]['ingridient']['milk']
 cappuccino_cost = MENU['cappuccino']["cost"]
-print(cappuccino_milk,cappuccino_cost,cappuccino_water )
 
 
 water = resources["water"]
@@ -84,43 +83,78 @@ while on:
             total_payment = payment()
             #Check if transaction is successful
             alert = cost(expresso_cost, total_payment)
-            total_money += alert
-            total_money = round(total_money, 2)
+            try:
+                total_money += alert
+                total_money = round(total_money, 2)
+            except TypeError:
+                print("Amount not enough to make the purchase")
+
             water -= expresso_water
             coffe -= expresso_coffe
             #Make Coffe
-            print("Here is your coffe, enjoy!☕")
-        else:
-            print(f"Not enough ingridient to makee {order}")
+            try:
+                if alert >= expresso_cost:
+                    print("Here is your coffe, enjoy!☕")
+            except TypeError:
+                pass
+        elif expresso_water > water:
+            print("Sorry there is not enough water")
+        elif expresso_coffe > coffe:
+            print("Sorry there is not enough coffe")
+
     elif order == "latte":
         if water >= latte_water and coffe >= latte_coffe and milk >= latte_milk:
             #Process coins
             total_payment = payment()
             #Check if transaction is successful
             alert = cost(latte_cost, total_payment)
-            total_money += alert
-            total_money = round(total_money, 2)
+            try:
+                total_money += alert
+                total_money = round(total_money, 2)
+            except TypeError:
+                print("Amount not enough to make the purchase")
+                
             water -= latte_water
             coffe -= latte_coffe
             milk -= latte_milk
             #Make Coffe
-            print("Here is your coffe, enjoy!☕")
-        else:
-            print(f"Not enough ingridient to makee {order}")
+            try:
+                if alert >= latte_cost:
+                    print("Here is your coffe, enjoy!☕")
+            except TypeError:
+                pass
+        elif latte_water > water:
+            print("Sorry there is not enough water")
+        elif latte_coffe > coffe:
+            print("Sorry there is not enough coffe")
+        elif latte_milk > milk:
+            print("Sorry there is not enough milk")
     elif order == "cappuccino":
         if water >= cappuccino_water and coffe >= cappuccino_coffe and milk >= cappuccino_milk:
            #Process coins
             total_payment = payment()
             #Check if transaction is successful
             alert = cost(cappuccino_cost, total_payment)
-            total_money += alert
-            total_money = round(total_money, 2)
+            try:
+                total_money += alert
+                total_money = round(total_money, 2)
+            except TypeError:
+                print("Amount not enough to make the purchase")
+                
             water -=  cappuccino_water
             coffe -= cappuccino_coffe
             milk -= cappuccino_milk
             #Make Coffe
-            print("Here is your coffe, enjoy!☕")
-        else:
-            print(f"Not enough ingridient to makee {order}")
+            try:
+                if alert >= cappuccino_cost:
+                    print("Here is your coffe, enjoy!☕")
+            except TypeError:
+                pass
+        elif cappuccino_water > water:
+            print("Sorry there is not enough water")
+        elif cappuccino_coffe > coffe:
+            print("Sorry there is not enough coffe")
+        elif cappuccino_milk > milk:
+            print("Sorry there is not enough milk")
     else:
         print("Check your order and try again")
