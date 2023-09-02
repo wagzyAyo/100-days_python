@@ -7,3 +7,4 @@ pet = input("What is the name of your pet?\n")
 # print out suggested names for the users
 print("Your band name could be " + city + " " + pet)
 # prompt should be entered in new line from the question
+print("Youve done well")
