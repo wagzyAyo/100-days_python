@@ -1,14 +1,24 @@
 from turtle import Turtle, Screen
+import random
 
-timmy_the_turtle = Turtle()
-timmy_the_turtle.shape("turtle")
-timmy_the_turtle.color("orange")
+timmy = Turtle()
+timmy.shape("turtle")
+timmy.color("orange")
 
-for _ in range(15):
-    timmy_the_turtle.forward(10)
-    timmy_the_turtle.penup()
-    timmy_the_turtle.forward(10)
-    timmy_the_turtle.pendown()
+colors = ["turquoise", "medium blue", "dark slate gray",
+          "light steel blue", "dark goldenrod", "slate blue"]
+
+
+def draw_shape(num_of_sides):
+    angle = 360 / num_of_sides
+    for _ in range(num_of_sides):
+        timmy.forward(100)
+        timmy.right(angle)
+
+
+for shape_side_n in range(3, 10):
+    timmy.color(random.choice(colors))
+    draw_shape(shape_side_n)
 
 
 screen = Screen()
