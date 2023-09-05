@@ -9,16 +9,14 @@ colors = ["turquoise", "medium blue", "dark slate gray",
           "light steel blue", "dark goldenrod", "slate blue"]
 
 
-def draw_shape(num_of_sides):
-    angle = 360 / num_of_sides
-    for _ in range(num_of_sides):
-        timmy.forward(100)
-        timmy.right(angle)
+direction = [0, 90, 180, 270]
+timmy.width(15)
+timmy.speed(0)
 
-
-for shape_side_n in range(3, 10):
+for _ in range(200):
     timmy.color(random.choice(colors))
-    draw_shape(shape_side_n)
+    timmy.forward(30)
+    timmy.setheading(random.choice(direction))
 
 
 screen = Screen()
