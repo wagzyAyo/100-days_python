@@ -21,9 +21,17 @@ def move_left():
     tim.left(10)
 
 
+def clear():
+    tim.clear()
+    tim.penup()
+    tim.home()
+    tim.pendown()
+
+
 screen.onkey(fun=move_forward, key="w")
 screen.onkey(fun=move_backward, key="s")
 screen.onkey(fun=move_right, key="a")
 screen.onkey(fun=move_left, key="d")
+screen.onkey(fun=clear, key="c")
 
 screen.exitonclick()
