@@ -1,3 +1,2 @@
-file = open("new_text.txt")
-content = file.read()
-print(content)
+file = open("new_text.txt", mode="w")
+file.write("java is good buy python is better")
