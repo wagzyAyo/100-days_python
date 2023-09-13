@@ -8,7 +8,6 @@ screen.addshape(image)
 
 turtle.shape(image)
 data = pandas.read_csv("./day25/50_states.csv")
-score = 0
 
 
 all_state = data.state.to_list()
@@ -17,8 +16,15 @@ guess_state = []
 
 while len(guess_state) < 50:
     answer_text = screen.textinput(
-        title=f"{score}/50 Guess the state", prompt="What's another state").title()
-
+        title=f"{len(guess_state)}/50 Guess the state", prompt="What's another state").title()
+    if answer_text == "Exit":
+        missing_state = []
+        for state in all_state:
+            if state not in guess_state:
+                missing_state.append(state)
+        df = pandas.DataFrame(missing_state)
+        df.to_csv("./day25/state_to_learn.csv")
+        break
     if answer_text in all_state:
         tim = turtle.Turtle()
         tim.hideturtle()
@@ -26,8 +32,6 @@ while len(guess_state) < 50:
         state_data = data[data.state == answer_text]
         tim.goto(int(state_data.x), int(state_data.y))
         tim.write(answer_text)
-        score += 1
         guess_state.append(answer_text)
 
-
-screen.exitonclick()
+# State to learn.csv
