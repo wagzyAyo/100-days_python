@@ -2,14 +2,13 @@ import pandas
 
 
 alpha = pandas.read_csv("./day26/nato_alphabet.csv")
-print(alpha)
 
+
+new_dict = {row.letter: row.code for (
+    index, row) in alpha.iterrows()}
 
 Enter_name = input("Enter Name: ").upper()
 sliced = list(Enter_name)
-print(sliced)
+new_list = [new_dict[char] for char in sliced]
 
-new_dict = {row.code for (
-    index, row) in alpha.iterrows() if row.letter in sliced}
-
-print(new_dict)
+print(new_list)
