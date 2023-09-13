@@ -2,7 +2,7 @@ from turtle import Turtle
 ALIGNMENT = "center"
 FONT = ("Courier", 20, "normal")
 
-with open("data.txt") as FILE:
+with open("./day24/data.txt") as FILE:
     content = int(FILE.read())
 
 
@@ -35,7 +35,7 @@ class Scoreboard(Turtle):
     def reset(self):
         if self.score > self.highest_score:
             self.highest_score = self.score
-            file = open("data.txt", mode="w")
+            file = open("./day24/data.txt", mode="w")
             file.write(f"{self.highest_score}")
         self.score = 0
         self.update_scoreboard()
