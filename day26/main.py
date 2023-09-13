@@ -1,11 +1,15 @@
-with open("./day26/file1.txt") as file1:
-    new_file_1 = [int(number.strip()) for number in file1.readlines()]
-    print(new_file_1)
+import pandas
 
 
-with open("./day26/file2.txt") as file2:
-    new_file_2 = [int(number.strip()) for number in file2.readlines()]
-    print(new_file_2)
+alpha = pandas.read_csv("./day26/nato_alphabet.csv")
+print(alpha)
 
-result = [number for number in new_file_1 if number in new_file_2]
-print(result)
+
+Enter_name = input("Enter Name: ").upper()
+sliced = list(Enter_name)
+print(sliced)
+
+new_dict = {row.code for (
+    index, row) in alpha.iterrows() if row.letter in sliced}
+
+print(new_dict)
