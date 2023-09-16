@@ -1,5 +1,8 @@
+import random
 from tkinter import *
 from tkinter import messagebox
+import pyperclip
+
 FONT_NAME = "Courier"
 
 
@@ -21,6 +24,35 @@ def save():
                 file.write(f"{web} | {mail} | {psw}\n")
             web_input.delete(0, END)
             psw_input.delete(0, END)
+
+
+# Paword generator
+def psw_gen():
+
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+               'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+               ]
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '@', '#', '$', '%', '&', '^', '(', ')', '+']
+
+    lett = random.randint(8, 10)
+    numb = random.randint(2, 4)
+    symb = random.randint(2, 4)
+
+    password_letter = [random.choice(letters) for char in range(lett)]
+
+    password_number = [random.choice(numbers) for number in range(numb)]
+
+    password_symbols = [random.choice(symbols) for sym in range(symb)]
+
+    password = password_letter + password_symbols + password_number
+
+    random.shuffle(password)
+
+    gen_psw = "".join(password)
+
+    psw_input.insert(0, gen_psw)
+    pyperclip.copy(gen_psw)
 
 
 window = Tk()
@@ -53,7 +85,7 @@ psw_label.grid(row=3, column=0)
 psw_input = Entry(width=21)
 psw_input.grid(row=3, column=1)
 
-gen_btn = Button(text="Generate password")
+gen_btn = Button(text="Generate password", command=psw_gen)
 gen_btn.grid(row=3, column=2)
 
 add_btn = Button(text="Add", width=36, command=save)
