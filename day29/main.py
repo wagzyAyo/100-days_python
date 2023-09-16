@@ -6,7 +6,9 @@ def save():
     mail = mail_input.get()
     psw = psw_input.get()
     with open("data.text", mode="a") as file:
-        file.write(f"{web} | {mail} | {psw}")
+        file.write(f"{web} | {mail} | {psw}\n")
+    web_input.delete(0, END)
+    psw_input.delete(0, END)
 
 
 FONT_NAME = "Courier"
