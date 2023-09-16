@@ -1,17 +1,26 @@
 from tkinter import *
+from tkinter import messagebox
+FONT_NAME = "Courier"
 
 
 def save():
     web = web_input.get()
     mail = mail_input.get()
     psw = psw_input.get()
-    with open("data.text", mode="a") as file:
-        file.write(f"{web} | {mail} | {psw}\n")
-    web_input.delete(0, END)
-    psw_input.delete(0, END)
 
+    if len(web) == 0 or len(mail) == 0:
+        messagebox.showinfo(
+            title="oops", message="Please dont leave any field empty!")
+    else:
 
-FONT_NAME = "Courier"
+        is_okay = messagebox.askokcancel(title=web, message=f"These are the details entered: \nEmail: {mail}"
+                                         f"\npassword: {psw} \nIs it okay to save?")
+
+        if is_okay:
+            with open("data.text", mode="a") as file:
+                file.write(f"{web} | {mail} | {psw}\n")
+            web_input.delete(0, END)
+            psw_input.delete(0, END)
 
 
 window = Tk()
@@ -36,7 +45,7 @@ mail_label = Label(text="Email/username:", font=(FONT_NAME))
 mail_label.grid(row=2, column=0)
 mail_input = Entry(width=35)
 mail_input.grid(row=2, column=1, columnspan=2)
-mail_input.insert(0, "talktoayo@hmail.com")
+mail_input.insert(0, "talktoayo@gmail.com")
 
 
 psw_label = Label(text="password:", font=(FONT_NAME))
