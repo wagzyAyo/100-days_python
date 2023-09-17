@@ -2,6 +2,7 @@ import random
 from tkinter import *
 from tkinter import messagebox
 import pyperclip
+import json
 
 FONT_NAME = "Courier"
 
@@ -10,17 +11,35 @@ def save():
     web = web_input.get()
     mail = mail_input.get()
     psw = psw_input.get()
+    new_data = {
+        web: {
+            "email": mail,
+            "password": psw,
+        }
+    }
 
     if len(web) == 0 or len(mail) == 0:
         messagebox.showinfo(
             title="oops", message="Please dont leave any field empty!")
-    else:
-        is_okay = messagebox.askokcancel(title=web, message=f"These are the details entered: \nEmail: {mail}"
-                                         f"\npassword: {psw} \nIs it okay to save?")
 
-        if is_okay:
-            with open("data.text", mode="a") as file:
-                file.write(f"{web} | {mail} | {psw}\n")
+    else:
+        try:
+            with open("data.json", mode="r") as data_file:
+                # Reading old data
+                data = json.load(data_file)
+                # Updating old data with new data
+
+        except FileNotFoundError:
+            with open("data.json", mode="w") as data_file:
+                # Saving Updated data
+                json.dump(new_data, data_file, indent=4)
+        else:
+            # Updating old data with new data
+            data.update(new_data)
+            with open("data.json", mode="w") as data_file:
+                # Saving Updated data
+                json.dump(data, data_file, indent=4)
+        finally:
             web_input.delete(0, END)
             psw_input.delete(0, END)
 
