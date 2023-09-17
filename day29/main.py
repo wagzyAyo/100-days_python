@@ -15,7 +15,6 @@ def save():
         messagebox.showinfo(
             title="oops", message="Please dont leave any field empty!")
     else:
-
         is_okay = messagebox.askokcancel(title=web, message=f"These are the details entered: \nEmail: {mail}"
                                          f"\npassword: {psw} \nIs it okay to save?")
 
