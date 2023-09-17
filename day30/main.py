@@ -73,6 +73,25 @@ def psw_gen():
     pyperclip.copy(gen_psw)
 
 
+def find_password():
+    web = web_input.get()
+    try:
+        with open("data.json") as data_file:
+            data = json.load(data_file)
+
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="No data found")
+    else:
+        if web in data:
+            email = data[web]["email"]
+            password = data[web]["password"]
+            messagebox.showinfo(
+                title=web, message=f"Email: {email}\npassword: {password}")
+        else:
+            messagebox.showinfo(
+                title="Error", message=f"No details for {web} exists")
+
+
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
@@ -86,9 +105,11 @@ canvas.grid(row=0, column=1)
 
 web_label = Label(text="Website:", font=(FONT_NAME))
 web_label.grid(row=1, column=0)
-web_input = Entry(width=35)
-web_input.grid(row=1, column=1, columnspan=2)
+web_input = Entry(width=21)
+web_input.grid(row=1, column=1)
 web_input.focus()
+search_btn = Button(text="search", width=13, command=find_password)
+search_btn.grid(row=1, column=2)
 
 
 mail_label = Label(text="Email/username:", font=(FONT_NAME))
