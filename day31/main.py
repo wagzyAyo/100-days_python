@@ -26,6 +26,13 @@ def flip_card():
     canvas.itemconfig(card_background, image=image2)
 
 
+def is_known():
+    to_learn.remove(current_card)
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("./day31/data/words_to_learn.csv")
+    next_card()
+
+
 window = Tk()
 window.title("Flashy")
 window.config(padx=30, pady=30, bg=BACKGROUND_COLOR)
@@ -52,7 +59,7 @@ wrong_btn.grid(row=1, column=0)
 
 right_image = PhotoImage(file="./day31/images/right 1.png")
 right_btn = Button(image=right_image, bg=BACKGROUND_COLOR,
-                   highlightthickness=0, command=next_card)
+                   highlightthickness=0, command=is_known)
 right_btn.grid(row=1, column=1)
 
 
