@@ -3,7 +3,11 @@ from datetime import datetime
 import csv
 import random
 import glob
+import smtplib
 
+
+EMAIL = "jmcvibes@yahoo.com"
+PASSWORD = "Wagzy17"
 data_list = []
 letters_list = []
 text_files = glob.glob("./day32/letters/*.txt")
@@ -46,4 +50,8 @@ print(converted_letter)
 # print(data_list)
 
 
-# Example usage:
+with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
+    connection.starttls()
+    connection.login(user=EMAIL, password=PASSWORD)
+    connection.send_message(from_addr=EMAIL, to_addrs="talktojmcvibes@gmail.com",
+                            msg=f"Subject:Happy birthday!\n\n{converted_letter}")

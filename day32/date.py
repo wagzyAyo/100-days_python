@@ -14,7 +14,7 @@ from datetime import datetime
 day = datetime.now().weekday()
 
 mail = "jmcvibes@yahoo.com"
-my_password = "Awesomejmc17"
+my_password = "Wagzy17"
 
 if day == 2:
     with open("./day32/quote.txt", encoding="utf-8") as file:
