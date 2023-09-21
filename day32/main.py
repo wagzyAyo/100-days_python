@@ -4,10 +4,10 @@ import csv
 import random
 import glob
 import smtplib
+import ssl
 
-
-EMAIL = "jmcvibes@yahoo.com"
-PASSWORD = "Wagzy17"
+EMAIL = "talktojmcvibes@gmail.com"
+PASSWORD = "********************"
 data_list = []
 letters_list = []
 text_files = glob.glob("./day32/letters/*.txt")
@@ -49,9 +49,9 @@ print(converted_letter)
 
 # print(data_list)
 
+context = ssl.create_default_context()  # Adds layer of security
 
-with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
-    connection.starttls()
+with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context) as connection:
     connection.login(user=EMAIL, password=PASSWORD)
-    connection.send_message(from_addr=EMAIL, to_addrs="talktojmcvibes@gmail.com",
-                            msg=f"Subject:Happy birthday!\n\n{converted_letter}")
+    connection.sendmail(from_addr=EMAIL, to_addrs="jmcvibes@yahoo.com",
+                        msg=f"Subject:Happy birthday!\n\n{converted_letter}")
