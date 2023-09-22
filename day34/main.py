@@ -1,6 +1,7 @@
 from data import question_data
 from question_model import Question
 from quiz_brain import Quizbrain
+from ui import QuizInterface
 
 
 question_bank = []
@@ -13,7 +14,9 @@ for question in question_data:
 
 
 quiz = Quizbrain(question_bank)
-while quiz.still_has_question():
-    quiz.next_question()
+Quiz_ui = QuizInterface()
+
+# while quiz.still_has_question():
+#    quiz.next_question()
 print("\n\nYou've completed the quiz")
 print(f"Youre final score was {quiz.score}/{len(question_bank)}")
