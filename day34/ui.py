@@ -2,7 +2,7 @@ from tkinter import *
 from quiz_brain import Quizbrain
 
 THEME_COLOR = "#375362"
-FONT = ("Arial", 20, "italic")
+FONT = ("Ariel", 20, "italic")
 
 
 class QuizInterface:
@@ -36,8 +36,15 @@ class QuizInterface:
 
     def get_next_question(self):
         self.canvas.config(bg="#ffffff")
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question, text=q_text)
+        if self.quiz.still_has_question():
+            self.score_label.config(text=f"score: {self.quiz.score}")
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question, text=q_text)
+        else:
+            self.canvas.itemconfig(
+                self.question, text="You've reached the end of the quiz.")
+            self.right_btn.config(state="disabled")
+            self.wrong_btn.config(state="disabled")
 
     def check_true(self):
         is_right = self.quiz.check_answer("True")
