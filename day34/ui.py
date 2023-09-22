@@ -6,7 +6,8 @@ FONT = ("Arial", 20, "italic")
 
 
 class QuizInterface:
-    def __init__(self):
+    def __init__(self, quiz_brain: Quizbrain):
+        self.quiz = quiz_brain
         self.window = Tk()
         self.window.title("Quizzler")
         self.window.config(bg=THEME_COLOR, padx=20, pady=20)
@@ -17,7 +18,7 @@ class QuizInterface:
         self.canvas = Canvas(width=300, height=250, bg="#ffffff")
 
         self.question = self.canvas.create_text(
-            150, 125, text="Some text", font=FONT)
+            150, 125,width=280, text="Some text", font=FONT)
         self.canvas.grid(row=1, column=1, pady=50)
 
         right = PhotoImage(file="./day34/images/right 1.png")
@@ -29,5 +30,10 @@ class QuizInterface:
         self.wrong_btn = Button(
             image=wrong, bg=THEME_COLOR, highlightthickness=0)
         self.wrong_btn.grid(row=2, column=2)
+        self.get_next_question()
 
         self.window.mainloop()
+
+    def get_next_question(self):
+        q_text = self.quiz.next_question()
+        self.canvas.itemconfig(self.question, text=q_text)
