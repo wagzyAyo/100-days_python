@@ -1,7 +1,8 @@
 import requests
 
 open_waether = "https://api.openweathermap.org/data/2.5/weather"
-API_key = "24be804efd2a6b236b7b470b07a85f69"
+# It is free account anyway
+API_key = "*******************"
 parameters = {
     "lat": 10,
     "lon": 8,
