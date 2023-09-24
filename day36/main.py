@@ -1,4 +1,8 @@
 import requests
+import smtplib
+import ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -14,6 +18,10 @@ parameters = {
     "symbol": STOCK_NAME,
     "apikey": API_KEY
 }
+
+EMAIL = "talktojmcvibes@gmail.com"
+PASSWORD = "******************"
+context = ssl.create_default_context()
 
 data = requests.get(STOCK_ENDPOINT, params=parameters)
 data.raise_for_status()
@@ -47,4 +55,22 @@ if diff_percent > 3:
     response.raise_for_status()
     new_data = response.json()["articles"]
     three_articles = new_data[:3]
-    print(three_articles)
+    formated_article = [
+        f"Headline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
+
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL
+    msg['To'] = "jmcvibes@yahoo.com"
+    msg['Subject'] = f"{COMPANY_NAME} update"
+
+    # Add each formatted article as a text part to the message
+    for article_text in formated_article:
+        part = MIMEText(article_text, 'plain')
+        msg.attach(part)
+        # Convert the message to a string
+        message = msg.as_string()
+
+        with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context) as mail:
+            mail.login(user=EMAIL, password=PASSWORD)
+            mail.sendmail(from_addr=EMAIL,
+                          to_addrs="jmcvibes@yahoo.com", msg=message)
