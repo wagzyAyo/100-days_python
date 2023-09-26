@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 API_ID = "392d7bf1"
 API_KEY = "3ac8c95a4315c1b501d79d8817f0e7e4"
@@ -8,6 +9,8 @@ HEADERS = {
     "x-app-key": API_KEY,
     "Content-Type": "application/json"
 }
+
+SHEETY_ENDPOINT = "https://api.sheety.co"
 
 API_END_POINT = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
