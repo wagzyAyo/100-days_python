@@ -1,8 +1,12 @@
 import requests
 
+API_ID = "392d7bf1"
+API_KEY = "3ac8c95a4315c1b501d79d8817f0e7e4"
+
 HEADERS = {
-    "APP_ID ": "392d7bf1",
-    "API_KEY": "3ac8c95a4315c1b501d79d8817f0e7e4"
+    "x-app-id": API_ID,
+    "x-app-key": API_KEY,
+    "Content-Type": "application/json"
 }
 
 API_END_POINT = "https://trackapi.nutritionix.com/v2/natural/exercise"
@@ -15,6 +19,6 @@ exercise_parameters = {
 }
 
 response = requests.post(
-    url=API_END_POINT, params=exercise_parameters, headers=HEADERS)
-
-print(response)
+    url=API_END_POINT, json=exercise_parameters, headers=HEADERS)
+result = response.json()
+print(result)
