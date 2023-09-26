@@ -3,6 +3,15 @@ from datetime import datetime
 
 API_ID = "392d7bf1"
 API_KEY = "3ac8c95a4315c1b501d79d8817f0e7e4"
+SHEETS_ENDPOINT = f"https://api.sheety.co/phill/myWebsite/emails"
+
+emails = {
+    "email":
+    {
+        "name": "ayo17",
+        "email": "talktojmcvibes@gmail.com"
+    }
+}
 
 HEADERS = {
     "x-app-id": API_ID,
@@ -10,7 +19,6 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-SHEETY_ENDPOINT = "https://api.sheety.co"
 
 API_END_POINT = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
@@ -25,26 +33,20 @@ response = requests.post(
     url=API_END_POINT, json=exercise_parameters, headers=HEADERS)
 result = response.json()
 
-length = len(result['exercises'])
-print(length)
 
-print(result)
+today_date = datetime.now().strftime("%d/%m,%Y")
+now_time = datetime.now().strftime("%X")
 
-new_data = []
+for item in result["exercises"]:
+    sheet_input = {
+        "Workout Tracking": {
+            "date": today_date,
+            "time": now_time,
+            "exercise": item["name"].title(),
+            "duration": item["duration_min"],
+            "calories": item["nf_calories"]
+        }
+    }
+sheety_response = requests.post(url=SHEETS_ENDPOINT, json=sheet_input)
 
-
-for item, value in result.items():
-    count = 0
-    if count > len(result):
-        break
-
-    user_input = result[item][count]
-    user_activity = user_input["user_input"]
-    work_out_duration = user_input['duration_min']
-    calories_burn = user_input['nf_calories']
-    count + 1
-    date = datetime.now().strftime("%d/%m/%Y")
-    new_data.append([date, user_activity, work_out_duration, calories_burn])
-
-
-print(new_data)
+print(sheety_response.text)
