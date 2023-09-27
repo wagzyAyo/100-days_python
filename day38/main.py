@@ -2,19 +2,11 @@ import requests
 from datetime import datetime
 
 
-SHEETY_AUTHENTICATION = {
-    "x-app-id": "ayo17",
-    "x-app-key": "Wagzy17",
-    "Authorization": "Basic YXlvMTc6V2FnenkxNw==",
-    "Content-Type": "application/json"
-}
-
-
 API_ID = "392d7bf1"
 API_KEY = "3ac8c95a4315c1b501d79d8817f0e7e4"
 
 
-SHEETS_ENDPOINT = "https://api.sheety.co/1d155e4c8874acf4ebd5da8953b622ad/workoutTracking/workouts"
+SHEETS_ENDPOINT = "https://api.sheety.co/1d155e4c8874acf4ebd5da8953b622ad/myWorkouts/workouts"
 
 
 HEADERS = {
@@ -52,5 +44,5 @@ for item in result["exercises"]:
         }
     }
 sheety_response = requests.post(
-    url=SHEETS_ENDPOINT, json=sheet_inputs, headers=SHEETY_AUTHENTICATION)
+    url=SHEETS_ENDPOINT, json=sheet_inputs)
 print(sheety_response.text)
