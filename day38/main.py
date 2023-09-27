@@ -1,17 +1,21 @@
 import requests
 from datetime import datetime
 
+
+SHEETY_AUTHENTICATION = {
+    "x-app-id": "ayo17",
+    "x-app-key": "Wagzy17",
+    "Authorization": "Basic YXlvMTc6V2FnenkxNw==",
+    "Content-Type": "application/json"
+}
+
+
 API_ID = "392d7bf1"
 API_KEY = "3ac8c95a4315c1b501d79d8817f0e7e4"
-SHEETS_ENDPOINT = f"https://api.sheety.co/phill/myWebsite/emails"
 
-emails = {
-    "email":
-    {
-        "name": "ayo17",
-        "email": "talktojmcvibes@gmail.com"
-    }
-}
+
+SHEETS_ENDPOINT = "https://api.sheety.co/1d155e4c8874acf4ebd5da8953b622ad/workoutTracking/workouts"
+
 
 HEADERS = {
     "x-app-id": API_ID,
@@ -38,8 +42,8 @@ today_date = datetime.now().strftime("%d/%m,%Y")
 now_time = datetime.now().strftime("%X")
 
 for item in result["exercises"]:
-    sheet_input = {
-        "Workout Tracking": {
+    sheet_inputs = {
+        "workout": {
             "date": today_date,
             "time": now_time,
             "exercise": item["name"].title(),
@@ -47,6 +51,6 @@ for item in result["exercises"]:
             "calories": item["nf_calories"]
         }
     }
-sheety_response = requests.post(url=SHEETS_ENDPOINT, json=sheet_input)
-
+sheety_response = requests.post(
+    url=SHEETS_ENDPOINT, json=sheet_inputs, headers=SHEETY_AUTHENTICATION)
 print(sheety_response.text)
