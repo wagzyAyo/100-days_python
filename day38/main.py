@@ -8,6 +8,9 @@ API_KEY = "3ac8c95a4315c1b501d79d8817f0e7e4"
 
 SHEETS_ENDPOINT = "https://api.sheety.co/1d155e4c8874acf4ebd5da8953b622ad/myWorkouts/workouts"
 
+AUTH_SHEETY_HEADER = {
+    "Authorization": "Bearer nodemodulator"
+}
 
 HEADERS = {
     "x-app-id": API_ID,
@@ -44,5 +47,5 @@ for item in result["exercises"]:
         }
     }
 sheety_response = requests.post(
-    url=SHEETS_ENDPOINT, json=sheet_inputs)
+    url=SHEETS_ENDPOINT, json=sheet_inputs, headers=AUTH_SHEETY_HEADER)
 print(sheety_response.text)
