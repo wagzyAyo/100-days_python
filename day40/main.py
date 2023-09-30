@@ -9,7 +9,15 @@ last_name = input("What is your first name? ")
 email = input("What is your email? ")
 confirm_email = input("Type your email again.: ")
 
+
+sheet_input = {
+    "user": {
+        "First Name": first_name,
+        "Last Name": last_name,
+        "Email": email
+    }
+}
 if email == confirm_email:
     print("You are in the club")
-    response = requests.post(API_USERS_SHEETY)
-    print(response.status_code)
+    response = requests.post(url=API_USERS_SHEETY, json=sheet_input)
+    print(response.text)
