@@ -1,12 +1,13 @@
 import requests
 from flight_data import FlightData
+
 TEQUILA_ENDPOINT = "https://tequila-api.kiwi.com"
 TEQUILA_API_KEY = "A_yvyg37irxUOFxUppAQfKF32NCqCzFw"
 
 
 class FlightSearch:
+
     def get_destination_code(self, city_name):
-        # print("get destination codes triggered")
         location_endpoint = f"{TEQUILA_ENDPOINT}/locations/query"
         headers = {"apikey": TEQUILA_API_KEY}
         query = {"term": city_name, "location_types": "city"}
@@ -39,7 +40,6 @@ class FlightSearch:
 
         try:
             data = response.json()["data"][0]
-            print(data)
         except IndexError:
             print(f"No flights found for {destination_city_code}.")
             return None
