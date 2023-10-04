@@ -16,9 +16,16 @@ film_title = [text.getText() for text in title]
 
 # print(film_title)
 
+movie_list = []
 number = 1
 for film in film_title:
     splited = film.split(')')
     movie_title = splited[1]
-    print(f"{number}) {movie_title}")
+    # print(f"{number}) {movie_title}")
+    movie = f"{number}) {movie_title}"
+    movie_list.append(movie)
     number += 1
+
+for movie in movie_list:
+    with open(file="day 45/movies.txt", mode='a') as file:
+        file.write(f"{movie}\n")
