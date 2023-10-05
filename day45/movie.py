@@ -27,5 +27,5 @@ for film in film_title:
     number += 1
 
 for movie in movie_list:
-    with open(file="day 45/movies.txt", mode='a') as file:
+    with open(file="day45/movies.txt", mode='a') as file:
         file.write(f"{movie}\n")
