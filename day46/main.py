@@ -11,12 +11,8 @@ response = requests.get(
 html_content = response.text
 
 soup = BeautifulSoup(html_content, "lxml")
-title_list = soup.select(selector="li", class_="c-title  a-no-trucate a-font-primary-bold-s u-letter-spacing-0021 lrv-u-font-size-18@tablet lrv-u-font-size-16 u-line-height-125 u-line-height-normal@mobile-max a-truncate-ellipsis u-max-width-330 u-max-width-230@tablet-only")
+title_list = soup.select(selector="li ul li h3")
 # print(title_list)
-song_title_list = []
-
-for title in title_list:
-    song = title.getText()
-    song_title_list.append(song)
+song_title_list = [title.getText().strip() for title in title_list]
 
 print(song_title_list)
