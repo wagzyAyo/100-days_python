@@ -34,4 +34,19 @@ title_list = soup.select(selector="li ul li h3")
 # print(title_list)
 song_title_list = [title.getText().strip() for title in title_list]
 
-print(song_title_list)
+# print(song_title_list)
+
+song_uris = []
+
+year = travel_year.split("-")[0]
+for song in song_title_list:
+    result = sp.search(q=f"track:{song} year={year}", type='track')
+    print(result)
+    try:
+        uri = result["tracks"]['items'][0]["uri"]
+        song_uris.append(uri)
+    except IndexError:
+        print(f"{song} does not exist in Spotify. Skipped")
+
+
+print(song_uris)
