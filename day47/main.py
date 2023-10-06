@@ -2,7 +2,12 @@ from bs4 import BeautifulSoup
 import requests
 import lxml
 import numpy
+import smtplib
+import ssl
 
+
+EMAIL = "talktojmcvibes@gmail.com"
+PASSWORD = "My password"
 
 Product = "https://www.amazon.com/Beelink-SER5-Computer-Display-Bluetooth/dp/B0C3VJGWSL/ref=sr_1_1_sspa?crid=G9S4AW54HEY2&keywords=pc&qid=1696601812&sprefix=%2Caps%2C569&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&smid=A3OHI25ZCHSGMQ"
 
@@ -42,3 +47,11 @@ for num in price_list:
     price = num
 
 print(price)
+
+Context = ssl.create_default_context()
+
+if price <= 400:
+    with smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=Context) as connection:
+        connection.login(user=EMAIL, password=PASSWORD)
+        connection.send_message(from_addr=EMAIL, to_addrs="jmcvibes@yahoo.com",
+                                msg=f"Hello the price of the product is {price}")
