@@ -1,6 +1,25 @@
 import requests
 from bs4 import BeautifulSoup
 import lxml
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
+
+SPOT_ID = "feadbc8159364400a48a91f26e1fe9bd"
+SECRETE = "c6eeaef8cf86429e842e58735eda534d"
+
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        scope="playlist-modify-private",
+        redirect_uri="https://example.com",
+        client_id=SPOT_ID,
+        client_secret=SECRETE,
+        show_dialog=True,
+        cache_path="token.txt"
+    )
+)
+
+user_id = sp.current_user()["id"]
 
 
 travel_year = input(
