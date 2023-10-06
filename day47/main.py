@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import lxml
+import numpy
 
 
 Product = "https://www.amazon.com/Beelink-SER5-Computer-Display-Bluetooth/dp/B0C3VJGWSL/ref=sr_1_1_sspa?crid=G9S4AW54HEY2&keywords=pc&qid=1696601812&sprefix=%2Caps%2C569&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1&smid=A3OHI25ZCHSGMQ"
@@ -32,4 +33,12 @@ soup = BeautifulSoup(website, "lxml")
 print(soup)
 
 
-price = soup.select(selector="div span span", class_="a-offscreen")
+price_in_symbol = soup.select(selector="div span span", class_="a-offscreen")
+price_list = [item.getText.split("$")[1] for item in price_in_symbol]
+
+price = 0
+
+for num in price_list:
+    price = num
+
+print(price)
