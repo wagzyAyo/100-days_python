@@ -16,22 +16,22 @@ def home():
     """
 
 
-@app.route("/<int:number>")
+@app.route("/<int:guess>")
 def guess_route(guess):
     if guess < number:
         return """
-        <h1 style='color:red'>Too low, Try again!</h1>
-        <img src='https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif'/>
+            <h1 style='color:red'>Too low, Try again!</h1>
+            <img src='https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif'/>
         """
     elif guess > number:
         return """
-        <h1 style='color:purple'>Too High, Try again!</h1>
-        <img src='https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif'/>
+            <h1 style='color:purple'>Too High, Try again!</h1>
+            <img src='https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif'/>
         """
     else:
         return """
-        <h1>Correct!</h1>
-        <img src='https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif'/>
+            <h1>Correct!</h1>
+            <img src='https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif'/>
         """
 
 
