@@ -60,14 +60,20 @@ p {
 }
 
 /* title image */
+
 .title-img {
     width: 60%;
     transform: rotate(25deg);
+    position: absolute;
+    top: -3em;
 }
 
 /* features section */
 #features {
     padding: 7% 15%;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
 }
 
 .feature-box {
@@ -111,4 +117,15 @@ p {
 .press-logo {
     width: 15%;
     padding: 20px 20px 50px;
+}
+
+/* pricing-section */
+
+#pricing {
+    padding: 100px;
+    text-align: center;
+}
+
+.pricing-col {
+    padding: 3% 2%;
 }
