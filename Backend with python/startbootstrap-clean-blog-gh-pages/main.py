@@ -26,8 +26,9 @@ def contact():
 def show_post(index):
     requested_post = None
     for post in blog_post:
-        if post["id"] == index:
+        if post.get('id') == index:
             requested_post = post
+            break
     return render_template("post.html", post=requested_post)
 
 
