@@ -6,15 +6,15 @@
     <title>flask form</title>
 </head>
 <body>
-    <form action="">
+    <form action="/login" method="post">
         <label for="">Name
-        <input type="text" placeholder="name">
+        <input type="text" placeholder="name" name="username">
     </label>
 
     <label for="">Password
-        <input type="password" placeholder="password">
+        <input type="password" placeholder="password" name="password">
     </label>
-    <button>Ok</button>
+    <button type="submit">Ok</button>
     </form>
 </body>
 </html>
