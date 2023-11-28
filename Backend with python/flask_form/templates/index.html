@@ -6,7 +6,7 @@
     <title>flask form</title>
 </head>
 <body>
-    <form action="/login" method="post">
+    <form action="{{ url_for('recieve_data') }}" method="post">
         <label for="">Name
         <input type="text" placeholder="name" name="username">
     </label>
