@@ -18,9 +18,10 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/login')
+@app.route('/login', methods=('GET', 'POST'))
 def login():
     form = Register()
+    form.validate_on_submit()
     return render_template('login.html', login_form=form)
 
 
