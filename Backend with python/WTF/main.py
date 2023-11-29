@@ -2,10 +2,11 @@ from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import data_required, Email, Length
-
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 app.secret_key = 'app key'
+Bootstrap(app)
 
 
 class Register(FlaskForm):
