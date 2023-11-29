@@ -2,6 +2,16 @@ body{
     background-color: black;
     font-family:poppins;
     color:#fff;
-    min-height: 100vh;
-    min-width: 100vw;
+    padding:5px 20%;
+}
+.title{
+    margin-top: 25%;
+}
+
+button {
+    background-color:yellow;
+    cursor:pointer;
+    padding:10px 15px;
+    border: none;
+    border-radius: 10px;
 }
