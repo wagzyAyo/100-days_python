@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
-from wtforms.validators import data_required
+from wtforms.validators import data_required, Email, Length
 
 
 app = Flask(__name__)
@@ -9,8 +9,10 @@ app.secret_key = 'app key'
 
 
 class Register(FlaskForm):
-    email = StringField(label='email', validators=[data_required()])
-    password = PasswordField(label='password', validators=[data_required()])
+    email = StringField(label='email', validators=[
+                        data_required(), Email(check_deliverability=True)])
+    password = PasswordField(label='password', validators=[
+                             data_required(), Length(min=8)])
 
 
 @app.route("/")
