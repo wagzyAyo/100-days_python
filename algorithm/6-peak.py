@@ -4,16 +4,19 @@ in a list of integers'''
 
 def find_peak(list_of_integers):
     '''funtion returns peak in a list of integers'''
-    peak = []
+    if not list_of_integers:
+        return None
 
-    if len(list_of_integers) == 0:
-        return 'None'
-    
-    if list_of_integers[0] > list_of_integers[-1]:
-        peak = list_of_integers[0]
-    elif list_of_integers[-1] > list_of_integers[0]:
-        peak = list_of_integers[-2]
-    else:
-        peak = list_of_integers[1]
+    low, high = 0, len(list_of_integers) - 1
 
-    return peak
+    while low < high:
+        mid = (low + high) // 2
+
+        if list_of_integers[mid] > list_of_integers[mid + 1]:
+            # The peak must be on the left side, including mid
+            high = mid
+        else:
+            # The peak must be on the right side, excluding mid
+            low = mid + 1
+
+    return list_of_integers[low]
