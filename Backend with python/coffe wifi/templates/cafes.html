@@ -14,9 +14,28 @@
           <!-- This is where you will write the code to render a Bootstrap 
           Table that contains all the information from the 
           cafe-data.csv file. -->
+          <thead>
+            <tr>
+              <th>Cafe Name</th>
+              <th>Location</th>
+              <!-- Add more headers based on your CSV columns -->
+            </tr>
+          </thead>
+          <tbody>
+          {% for row in cafes %}
+          <tr>
+            <td>{{ row[0] }}</td>  <!-- Assuming the first column is Cafe Name -->
+            <td>{{ row[1] }}</td>  <!-- Assuming the second column is Location -->
+            <td>{{row[2]}}</td>
+            <td>{{row[3]}}</td>
+            <td>{{row[4]}}</td>
+            <td>{{row[5]}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
   	  </table>
 
-      <p><a href="#">Return to index page</a></p>
+      <p><a href="{{url_for('home')}}">Return to index page</a></p>
 
     </div>
   </div>
