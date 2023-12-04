@@ -12,6 +12,9 @@ Bootstrap(app)
 
 class CafeForm(FlaskForm):
     cafe = StringField('Cafe name', validators=[DataRequired()])
+    location = StringField('Location url', validators=[DataRequired()])
+    open_time = StringField('Open Time', validators=[DataRequired()])
+    closing_time = StringField('Closing time', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 # Exercise:
