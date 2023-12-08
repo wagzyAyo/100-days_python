@@ -14,9 +14,26 @@
         {{ form.location.label }} {{ form.location(size=32) }}<br>
         {{ form.open_time.label }} {{ form.open_time(size=32) }}<br>
         {{ form.closing_time.label }} {{ form.closing_time(size=32) }}<br>
-        {{ form.coffee_rating.label }} {{ form.coffee_rating() }}<br>
-        {{ form.wifi_rating.label }} {{ form.wifi_rating() }}<br>
-        {{ form.power_rating.label }} {{ form.power_rating() }}<br>
+        {{ form.coffee_rating.label }} 
+<select id="{{ form.coffee_rating.id }}" name="{{ form.coffee_rating.name }}">
+    {% for value, label in form.coffee_rating.choices %}
+        <option value="{{ value }}">{{ label }}</option>
+    {% endfor %}
+</select><br>
+
+{{ form.wifi_rating.label }} 
+<select id="{{ form.wifi_rating.id }}" name="{{ form.wifi_rating.name }}">
+    {% for value, label in form.wifi_rating.choices %}
+        <option value="{{ value }}">{{ label }}</option>
+    {% endfor %}
+</select><br>
+
+{{ form.power_rating.label }} 
+<select id="{{ form.power_rating.id }}" name="{{ form.power_rating.name }}">
+    {% for value, label in form.power_rating.choices %}
+        <option value="{{ value }}">{{ label }}</option>
+    {% endfor %}
+</select><br>
         {{ form.submit() }}
     </form>
 

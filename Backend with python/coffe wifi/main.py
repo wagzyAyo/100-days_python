@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField,SelectField
@@ -15,9 +15,9 @@ class CafeForm(FlaskForm):
     location = StringField('Location url', validators=[DataRequired()])
     open_time = StringField('Open Time', validators=[DataRequired()])
     closing_time = StringField('Closing time', validators=[DataRequired()])
-    coffee_rating = SelectField('Coffee Rating', choices=[(str(i), str(i)) for i in range(6)], validators=[DataRequired()])
-    wifi_rating = SelectField('WiFi Rating', choices=[(str(i), str(i)) for i in range(6)], validators=[DataRequired()])
-    power_rating = SelectField('Power Outlet Rating', choices=[(str(i), str(i)) for i in range(6)], validators=[DataRequired()])
+    coffee_rating = SelectField('Coffee Rating', choices=[(str(i), f'☕️' * i) for i in range(6)], validators=[DataRequired()])
+    wifi_rating = SelectField('WiFi Rating', choices=[(str(i), f'💪' * i) for i in range(6)], validators=[DataRequired()])
+    power_rating = SelectField('Power Outlet Rating', choices=[(str(i), f'🔌' * i) for i in range(6)], validators=[DataRequired()])
     
     submit = SubmitField('Submit')
 
@@ -36,7 +36,7 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/add')
+@app.route('/add', method=['GET, POST'])
 def add_cafe():
     form = CafeForm()
     if form.validate_on_submit():
@@ -50,6 +50,8 @@ def add_cafe():
         # with   if form.validate_on_submit()
         with open('/coffe wifi/cafe-data.csv', mode='a', newline='') as csvfile :
             write = csv.writer(csvfile)
+
+        flash('Cafe added successfully!', 'success')
         
     return render_template('add.html', form=form)
 
