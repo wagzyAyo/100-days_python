@@ -45,9 +45,9 @@ def add_cafe():
         cafe_location = form.location.data
         cafe_open = form.open_time.data
         cafe_close = form.closing_time.data
-        coffe_rating = form.coffee_rating.data
-        wifi_rating = form.wifi_rating.data
-        power_outlet = form.power_rating.data
+        coffe_rating = '☕️' * int(form.coffee_rating.data)
+        wifi_rating = '💪' * int(form.wifi_rating.data)
+        power_outlet = '🔌' * int(form.power_rating.data)
         # Exercise:
         # Make the form write a new row into cafe-data.csv
         # with   if form.validate_on_submit()
