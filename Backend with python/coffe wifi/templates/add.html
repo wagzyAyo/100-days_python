@@ -8,11 +8,19 @@
     <div class="col-sm-12 col-md-8">
 
       <h1>Add a new cafe into the database</h1>
+      <form action="{{ url_for('add_cafe')}}" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.cafe.label }} {{ form.cafe(size=32) }}<br>
+        {{ form.location.label }} {{ form.location(size=32) }}<br>
+        {{ form.open_time.label }} {{ form.open_time(size=32) }}<br>
+        {{ form.closing_time.label }} {{ form.closing_time(size=32) }}<br>
+        {{ form.submit() }}
+    </form>
 
       <!-- This is where your WTForm will go -->
 
-	  <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
-
+	  <p class="space-above"><a href="{{ url_for('add_cafe') }}">See all cafes</a></p>
+    
     </div>
   </div>
 </div>
