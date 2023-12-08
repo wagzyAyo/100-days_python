@@ -36,20 +36,25 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/add', method=['GET, POST'])
+@app.route('/add', methods=['GET', 'POST'])
 def add_cafe():
     form = CafeForm()
     if form.validate_on_submit():
         print("True")
         cafe_name = form.cafe.data
         cafe_location = form.location.data
-        cafe_open = form.open.data
-        cafe_close = form.close.data
+        cafe_open = form.open_time.data
+        cafe_close = form.closing_time.data
+        coffe_rating = form.coffee_rating.data
+        wifi_rating = form.wifi_rating.data
+        power_outlet = form.power_rating.data
         # Exercise:
         # Make the form write a new row into cafe-data.csv
         # with   if form.validate_on_submit()
-        with open('/coffe wifi/cafe-data.csv', mode='a', newline='') as csvfile :
+        with open('Backend with python/coffe wifi/cafe-data.csv', mode='a', newline='', encoding='utf-8') as csvfile :
             write = csv.writer(csvfile)
+            write.writerow([cafe_name, cafe_location, cafe_open, cafe_close
+                            , coffe_rating, wifi_rating, power_outlet])
 
         flash('Cafe added successfully!', 'success')
         
