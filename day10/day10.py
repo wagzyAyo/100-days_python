@@ -35,10 +35,6 @@ symbol_op = input("pick an operation from the line above: ")
 num2 = float(input("What is your second number: "))
 
 
-def ret():
-    return
-
-
 calc_op = operations[symbol_op]
 answer_1 = calc_op(num1, num2)
 print(f"{num1} {symbol_op} {num2} = {answer_1}")
@@ -49,7 +45,7 @@ while continuety:
         f"do you want to continue with {answer_1} 'y' to continue 'n' for NO: ")
     if cont == "n":
         continuety = False
-        ret()
+        break
     symbol_op = input("pick an operation : ")
     calc_op2 = operations[symbol_op]
     num3 = float(input("Enter another number: "))
